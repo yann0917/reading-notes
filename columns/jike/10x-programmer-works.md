@@ -78,7 +78,7 @@
 
 
 
-[^1]: 我们可以把它理解成开发的准备阶段，[迭代0清单](/images/preparation-list.jpg)
+[^1]: images/preparation-list.jpg
 
 
 
