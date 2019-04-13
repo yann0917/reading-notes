@@ -4,7 +4,7 @@
 
 | No.  | Contents                                                 | Notes |
 | ---- | -------------------------------------------------------- | ----- |
-| 1    | [10x程序员工作法](/coulmns/jike/10x-programmer-works.md) |       |
+| 1    | [10x程序员工作法](/columns/jike/10x-programmer-works.md) |       |
 | 2    | 程序员进阶攻略                                           |       |
 | 3    | 趣谈网络协议                                             |       |
 | 4    | 趣谈Linux操作系统                                        |       |
