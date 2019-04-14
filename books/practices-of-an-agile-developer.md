@@ -3,13 +3,15 @@
 > [高效程序员的45个习惯](<https://book.douban.com/subject/4164024/>)
 >
 > 作者:  [[美\] Venkat Subramaniam](https://book.douban.com/author/4536558/) / [[美\] Andy Hunt](https://book.douban.com/author/4536562/) 
+>
 > 出版社: 人民邮电出版社
+>
 > 副标题: 敏捷开发修炼之道
+>
 > 译者: [钱安川](https://book.douban.com/search/%E9%92%B1%E5%AE%89%E5%B7%9D) / [郑柯](https://book.douban.com/search/%E9%83%91%E6%9F%AF) 
+>
 > 出版年: 2010-01
-> 页数: 204
-> 定价: 35.00元
-> 装帧: 平装
+>
 > ISBN: 9787115215536
 
 
