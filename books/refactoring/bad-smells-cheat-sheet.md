@@ -23,8 +23,8 @@
 | 19   | Primitive Obsession                           | 基本类型偏执   | 以对象取代基本类型 以子类取代类型码<br> 以多态取代条件表达式 提炼类 引入参数对象 |
 | 20   | Refused Bequest                               | 被拒绝的遗赠   | 函数下移 字段下移 以委托取代子类 <br>以委托取代超类          |
 | 21   | Repeated Switches                             | 重复的 switch  | 以多态取代条件表达式                                         |
-| 22   | Shotgun Surgery                               | 霰弹式修改     | 搬移函数 搬移字段 函数组合成类 函数组合成变换 拆分阶段 内联函数 内联类 |
-| 23   | Speculative Generality                        | 夸夸其谈通用性 | 折叠继承体系 内联函数 内联类 改变函数声明 移除死代码         |
+| 22   | Shotgun Surgery                               | 霰弹式修改     | 搬移函数 搬移字段 函数组合成类 函数组合成变换<br> 拆分阶段 内联函数 内联类 |
+| 23   | Speculative Generality                        | 夸夸其谈通用性 | 折叠继承体系 内联函数 内联类 <br>改变函数声明 移除死代码     |
 | 24   | Temporary Field                               | 临时字段       | 提炼类 搬移函数 引入特例                                     |
 
 ---
