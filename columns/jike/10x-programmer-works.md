@@ -80,13 +80,10 @@
 * 小步改造遗留系统，不要回到老路上；
 
 <details>
-<summary>
-迭代0清单
-</summary>
+<summary>迭代0清单</summary>
+
 ![](https://github.com/yann0917/reading-notes/raw/master/columns/jike/images/preparation-list.jpg) 
 </details>
 
-
-![](https://github.com/yann0917/reading-notes/raw/master/columns/jike/images/preparation-list.jpg) 
 
 ---
