@@ -83,7 +83,7 @@
 <summary>
 迭代0清单
 </summary>
-![迭代0清单](/images/preparation-list.jpg) 
+![迭代0清单](/columns/jike/images/preparation-list.jpg) 
 </details>
 
 
