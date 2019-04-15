@@ -83,7 +83,7 @@
 <summary>
 迭代0清单
 </summary>
-![迭代0清单](/columns/jike/images/preparation-list.jpg) 
+![迭代0清单](https://github.com/yann0917/reading-notes/blob/75d7c37434218af3c9309d66a0d37cb87bc74135/columns/jike/images/preparation-list.jpg) 
 </details>
 
 
