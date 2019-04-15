@@ -2,21 +2,19 @@
 
 > [高效程序员的45个习惯](<https://book.douban.com/subject/4164024/>)
 >
-> 作者:  [[美\] Venkat Subramaniam](https://book.douban.com/author/4536558/) / [[美\] Andy Hunt](https://book.douban.com/author/4536562/) 
+> 作者:  [[美\] Venkat Subramaniam](https://book.douban.com/author/4536558/) / [[美\] Andy Hunt](https://book.douban.com/author/4536562/)
 >
 > 出版社: 人民邮电出版社
 >
 > 副标题: 敏捷开发修炼之道
 >
-> 译者: [钱安川](https://book.douban.com/search/%E9%92%B1%E5%AE%89%E5%B7%9D) / [郑柯](https://book.douban.com/search/%E9%83%91%E6%9F%AF) 
+> 译者: [钱安川](https://book.douban.com/search/%E9%92%B1%E5%AE%89%E5%B7%9D) / [郑柯](https://book.douban.com/search/%E9%83%91%E6%9F%AF)
 >
 > 出版年: 2010-01
 >
 > ISBN: 9787115215536
 
-
-
-“敏捷开发就是在一个高度协作的环境中，不断地使用反馈进行自我调整和完善。”
+敏捷开发就是在一个高度协作的环境中，不断地使用反馈进行自我调整和完善。
 
 ## 态度决定一切
 
@@ -90,6 +88,3 @@
 * 及时通报进展与问题，及时通报进展与问题，发布进展状况、新的想法和目前正在关注的主题。不要等着别人来问项目状态如何
 
 ---
-
-
-
