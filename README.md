@@ -6,7 +6,7 @@
 
 * [10x程序员工作法](/columns/jike/10x-programmer-works.md)
 * [程序员进阶攻略]()
-* [趣谈网络协议]() 
+* [趣谈网络协议]()
 * [趣谈Linux操作系统]()
 * [如何设计一个秒杀系统](/columns/jike/seckill-system.md/) 
 * [Linux性能优化实战]()
@@ -41,4 +41,3 @@
 * [高效程序员的45个习惯](/books/practices-of-an-agile-developer.md)
 
 ___
-
