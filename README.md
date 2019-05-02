@@ -13,8 +13,8 @@
 
 ### Books
 
-* [Go 语言实战]()
-* [Go Web 编程]()
+* [Go 语言实战](/books/go-in-action.md)
+* [Go Web 编程](/books/go-web-programming.md)
 * [Redis 实战]()
 * [C 语言程序设计现代方法]()
 * [RabbitMQ 实战]()
