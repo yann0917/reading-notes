@@ -39,5 +39,6 @@
 * [Kubernetes 权威指南]()
 * [重构 改善既有代码的设计 第2版](/books/refactoring-2nd.md)
 * [高效程序员的45个习惯](/books/practices-of-an-agile-developer.md)
+* [算法图解](/books/grokking-algorithms.md)
 
 ___
