@@ -2,19 +2,23 @@
 
 ## Contents
 
-### 极客时间学习笔记
+### 学习笔记
 
+* [密码学](columns/cryptography/crypt.md)
 * [10x程序员工作法](/columns/jike/10x-programmer-works.md)
+* [如何设计一个秒杀系统](/columns/jike/seckill-system.md/)
 * [程序员进阶攻略]()
 * [趣谈网络协议]()
 * [趣谈Linux操作系统]()
-* [如何设计一个秒杀系统](/columns/jike/seckill-system.md/) 
 * [Linux性能优化实战]()
 
 ### Books
 
 * [Go 语言实战](/books/go-in-action.md)
 * [Go Web 编程](/books/go-web-programming.md)
+* [重构 改善既有代码的设计 第2版](/books/refactoring-2nd.md)
+* [高效程序员的45个习惯](/books/practices-of-an-agile-developer.md)
+* [算法图解](/books/grokking-algorithms.md)
 * [Redis 实战]()
 * [C 语言程序设计现代方法]()
 * [RabbitMQ 实战]()
@@ -37,8 +41,6 @@
 * [可伸缩服务架构：框架与中间件]()
 * [亿级流量网站架构核心技术]()
 * [Kubernetes 权威指南]()
-* [重构 改善既有代码的设计 第2版](/books/refactoring-2nd.md)
-* [高效程序员的45个习惯](/books/practices-of-an-agile-developer.md)
-* [算法图解](/books/grokking-algorithms.md)
+
 
 ___
