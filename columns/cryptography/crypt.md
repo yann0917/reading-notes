@@ -1724,23 +1724,23 @@ func RsaGenKey(bits int) error{
 
   ```go
   func getMD5_2(str []byte) string {
-  	// 1. 创建一个使用MD5校验的Hash对象`
-  	myHash := md5.New()
-  	// 2. 通过io操作将数据写入hash对象中
-  	io.WriteString(myHash, "hello")
-  	//io.WriteString(myHash, ", world")
-  	myHash.Write([]byte(", world"))
-  	// 3. 计算结果
-  	result := myHash.Sum(nil)
-  	fmt.Println(result)
-  	// 4. 将结果转换为16进制格式字符串
-  	res := fmt.Sprintf("%x", result)
-  	fmt.Println(res)
-  	// --- 这是另外一种格式化切片的方式
-  	res = hex.EncodeToString(result)
-  	fmt.Println(res)
+    // 1. 创建一个使用MD5校验的Hash对象`
+    myHash := md5.New()
+    // 2. 通过io操作将数据写入hash对象中
+    io.WriteString(myHash, "hello")
+    //io.WriteString(myHash, ", world")
+    myHash.Write([]byte(", world"))
+    // 3. 计算结果
+    result := myHash.Sum(nil)
+    fmt.Println(result)
+    // 4. 将结果转换为16进制格式字符串
+    res := fmt.Sprintf("%x", result)
+    fmt.Println(res)
+    // --- 这是另外一种格式化切片的方式
+    res = hex.EncodeToString(result)
+    fmt.Println(res)
 
-  	return res
+    return res
   }
   ```
 
@@ -1795,11 +1795,10 @@ func RsaGenKey(bits int) error{
 
      ```go
      Sum(b []byte) []byte
-         - 参数 b: 将b中的数据进行哈希计算, 结果添加到原始数据的前面, 
+         - 参数 b: 将b中的数据进行哈希计算, 结果添加到原始数据的前面,
            		 一般情况下该参数指定为空, 即: nil
-         - 返回值: 进行哈希运算之后得到的结果 
+         - 返回值: 进行哈希运算之后得到的结果
      ```
-
 
 #### 5.5.3 SHA-1、SHA-224、SHA-256、SHA-384、SHA-512
 
@@ -1834,30 +1833,30 @@ func RsaGenKey(bits int) error{
 
 - **使用sha1计算文件指纹**
 
-  > 上一小节介绍了如何使用go提供的API计算数据的md5指纹, sha1的计算方式和md5的套路是一样的, 需要将md5包, 替换为sh1, 下面给大家介绍一下如何使用sha1计算文件的指纹(md5亦如此) 
+  > 上一小节介绍了如何使用go提供的API计算数据的md5指纹, sha1的计算方式和md5的套路是一样的, 需要将md5包, 替换为sh1, 下面给大家介绍一下如何使用sha1计算文件的指纹(md5亦如此)
 
   ```go
   func getSha1(src string) string {
-  	// 1. 打开文件
-  	fp, err := os.Open(src)
-  	if err != nil {
-  		return "文件打开失败"
-  	}
-  	// 2. 创建基于sha1算法的Hash对象
-  	myHash := sha1.New()
-  	// 3. 将文件数据拷贝给哈希对象
-  	num, err := io.Copy(myHash, fp)
-  	if err != nil {
-  		return "拷贝文件失败"
-  	}
-  	fmt.Println("文件大小: ", num)
-  	// 4. 计算文件的哈希值
-  	tmp1 := myHash.Sum(nil)
-  	// 5. 数据格式转换
-      result := hex.EncodeToString(tmp1)
-  	fmt.Println("sha1: ", result)
+    // 1. 打开文件
+    fp, err := os.Open(src)
+    if err != nil {
+        return "文件打开失败"
+    }
+    // 2. 创建基于sha1算法的Hash对象
+    myHash := sha1.New()
+    // 3. 将文件数据拷贝给哈希对象
+    num, err := io.Copy(myHash, fp)
+    if err != nil {
+        return "拷贝文件失败"
+    }
+    fmt.Println("文件大小: ", num)
+    // 4. 计算文件的哈希值
+    tmp1 := myHash.Sum(nil)
+    // 5. 数据格式转换
+    result := hex.EncodeToString(tmp1)
+    fmt.Println("sha1: ", result)
 
-  	return result
+    return result
   }
   ```
 
@@ -1927,7 +1926,7 @@ func RsaGenKey(bits int) error{
 >
 > 使用SHA-I、MD5、RIPEMD-160所构造的HMAC，分别称为HMAC-SHA-1、HMAC-MD5和HMAC-RlPEMD。
 
-				**使用HMAC通过秘钥将消息生成消息认证码的内部实现**：
+			**使用HMAC通过秘钥将消息生成消息认证码的内部实现**：
 
 ![1538733763591](assets/1538733763591.png)
 
@@ -1965,14 +1964,14 @@ func Equal(mac1, mac2 []byte) bool
 ```go
 // 生成消息认证码
 func GenerateHMAC(src, key []byte) []byte {
-	// 1. 创建一个底层采用sha256算法的 hash.Hash 接口
-	myHmac := hmac.New(sha256.New, key)
-	// 2. 添加测试数据
-	myHmac.Write(src)
-	// 3. 计算结果
-	result := myHmac.Sum(nil)
+    // 1. 创建一个底层采用sha256算法的 hash.Hash 接口
+    myHmac := hmac.New(sha256.New, key)
+    // 2. 添加测试数据
+    myHmac.Write(src)
+    // 3. 计算结果
+    result := myHmac.Sum(nil)
 
-	return result
+    return result
 }
 ```
 
@@ -1999,14 +1998,14 @@ func GenerateHMAC(src, key []byte) []byte {
 ```go
 func VerifyHMAC(res, src, key []byte) bool {
 
-	// 1. 创建一个底层采用sha256算法的 hash.Hash 接口
-	myHmac := hmac.New(sha256.New, key)
-	// 2. 添加测试数据
-	myHmac.Write(src)
-	// 3. 计算结果
-	result := myHmac.Sum(nil)
-	// 4. 比较结果
-	return hmac.Equal(res, result)
+    // 1. 创建一个底层采用sha256算法的 hash.Hash 接口
+    myHmac := hmac.New(sha256.New, key)
+    // 2. 添加测试数据
+    myHmac.Write(src)
+    // 3. 计算结果
+    result := myHmac.Sum(nil)
+    // 4. 比较结果
+    return hmac.Equal(res, result)
 }
 ```
 
@@ -2025,19 +2024,17 @@ func VerifyHMAC(res, src, key []byte) bool {
 
 ```go
 func HMacTest() {
-	key := []byte("我是消息认证码秘钥")
-	src := []byte("我是消息认证码测试数据")
-	result := GenerateHMAC(src, key)
-	final := VerifyHMAC(result, src, key)
-	if final {
-		fmt.Println("消息认证码认证成功!!!")
-	} else {
-		fmt.Println("消息认证码认证失败 ......")
-	}
+    key := []byte("我是消息认证码秘钥")
+    src := []byte("我是消息认证码测试数据")
+    result := GenerateHMAC(src, key)
+    final := VerifyHMAC(result, src, key)
+    if final {
+        fmt.Println("消息认证码认证成功!!!")
+    } else {
+        fmt.Println("消息认证码认证失败 ......")
+    }
 }
 ```
-
-
 
 ### 6.3 消息认证码的密钥配送问题
 
@@ -2174,7 +2171,7 @@ func HMacTest() {
 > **（2）Alice用自己的私钥对散列值进行加密。**
 >
 > 		用私钥加密散列值所得到的密文就是Alice对这条散列值的签名，由于只有Alice才持有自己的私钥因此,
->		
+>
 > 		除了Alice以外，其他人是无法生成相同的签名（密文）的。
 >
 > **（3）Alice将消息和签名发送给Bob。**
@@ -2182,9 +2179,9 @@ func HMacTest() {
 > **（4）Bob用Alice的公钥对收到的签名进行解密。**
 >
 > 		如果收到的签名确实是用Alice的私钥进行加密而得到的密文（签名），那么用Alice的公钥应该能够正确
->		
+>
 > 		解密，解密的结果应该等于消息的散列值。如果收到的签名不是用Alice的私钥进行加密而得到的密文，
->		
+>
 > 		那么就无法用Alice的公钥正确解密（解密后得到的数据看起来是随机的）。
 >
 > **（5）Bob将签名解密后得到的散列值与Alice直接发送的消息的散列值进行对比。**
@@ -2209,90 +2206,88 @@ func HMacTest() {
 
 ```go
 func SignatureRSA() ([]byte, error) {
-	// 1. 从秘钥文件中读生成的秘钥内容
-	fp, err := os.Open("private.pem")
-	if err != nil {
-		return nil, errors.New("打开私钥文件 - private.pem 失败!!!")
-	}
-	// 2. 读文件内容
-	fileInfo, _ := fp.Stat()
-	all := make([]byte, fileInfo.Size())
-	_, err = fp.Read(all)
-	if err != nil {
-		return nil, errors.New("读文件内容失败!!!")
-	}
-	fmt.Println("文件内容: ", string(all))
-	// 3. 关闭文件
-	defer fp.Close()
-	// 4. 将数据解析成pem格式的数据块
-	block, _ := pem.Decode(all)
-	// 5. 解析pem数据块, 得到私钥
-	priv_Key, err := x509.ParsePKCS1PrivateKey(block.Bytes)
-	if err != nil {
-		return nil, errors.New("解析私钥失败!!!")
-	}
+    // 1. 从秘钥文件中读生成的秘钥内容
+    fp, err := os.Open("private.pem")
+    if err != nil {
+        return nil, errors.New("打开私钥文件 - private.pem 失败!!!")
+    }
+    // 2. 读文件内容
+    fileInfo, _ := fp.Stat()
+    all := make([]byte, fileInfo.Size())
+    _, err = fp.Read(all)
+    if err != nil {
+        return nil, errors.New("读文件内容失败!!!")
+    }
+    fmt.Println("文件内容: ", string(all))
+    // 3. 关闭文件
+    defer fp.Close()
+    // 4. 将数据解析成pem格式的数据块
+    block, _ := pem.Decode(all)
+    // 5. 解析pem数据块, 得到私钥
+    priv_Key, err := x509.ParsePKCS1PrivateKey(block.Bytes)
+    if err != nil {
+        return nil, errors.New("解析私钥失败!!!")
+    }
 
-	// 待签名数据
-	myData := []byte("渡远荆门外，来从楚国游。山随平野尽，江入大荒流。月下飞天境，云生结海楼。仍怜故乡水，万里送行舟。")
-	// 6. 将数据通过哈希函数生成信息摘要
-	myHash := sha256.New()
-	myHash.Write(myData)
-	result := myHash.Sum(nil)
-	// 7. 生成签名
-	mySignature, err := rsa.SignPKCS1v15(rand.Reader, priv_Key, crypto.SHA256, result)
-	if err != nil {
-		return nil, errors.New("生成签名失败!!!")
-	}
+    // 待签名数据
+    myData := []byte("渡远荆门外，来从楚国游。山随平野尽，江入大荒流。月下飞天境，云生结海楼。仍怜故乡水，万里送行舟。")
+    // 6. 将数据通过哈希函数生成信息摘要
+    myHash := sha256.New()
+    myHash.Write(myData)
+    result := myHash.Sum(nil)
+    // 7. 生成签名
+    mySignature, err := rsa.SignPKCS1v15(rand.Reader, priv_Key, crypto.SHA256, result)
+    if err != nil {
+        return nil, errors.New("生成签名失败!!!")
+    }
 
-	return mySignature, nil
+    return mySignature, nil
 }
 ```
-
-
 
 #### 7.4.2 验证数字签名
 
 ```go
 func VerifyRSA(src []byte) (error){
-	// 1. 从秘钥文件中读生成的秘钥内容
-	fp, err := os.Open("public.pem")
-	if err != nil {
-		return errors.New("打开公钥文件 - public.pem 失败!!!")
-	}
-	// 2. 读文件内容
-	fileInfo, _ := fp.Stat()
-	all := make([]byte, fileInfo.Size())
-	num, err := fp.Read(all)
-	if err != nil {
-		return errors.New("读文件内容失败!!!")
-	}
-	fmt.Println("文件大小: ", num)
-	// 3. 关闭文件
-	defer fp.Close()
-	// 4. 将公钥数据解析为pem格式的数据块
-	block, _ := pem.Decode(all)
-	// 5. 将公钥从pem数据块中提取出来
-	pubInterface, err := x509.ParsePKIXPublicKey(block.Bytes)
-	if err != nil {
-		return errors.New("解析公钥失败!!!")
-	}
-	// 6. 公钥接口转换为公钥对象
-	pubKey := pubInterface.(*rsa.PublicKey)
-	// 待认证数据
-	myData := []byte("渡远荆门外，来从楚国游。山随平野尽，江入大荒流。月下飞天境，云生结海楼。仍怜故乡水，万里送行舟。")
-	// 7. 将数据通过哈希函数生成信息摘要
-	myHash := sha256.New()
-	myHash.Write(myData)
-	result := myHash.Sum(nil)
+    // 1. 从秘钥文件中读生成的秘钥内容
+    fp, err := os.Open("public.pem")
+    if err != nil {
+        return errors.New("打开公钥文件 - public.pem 失败!!!")
+    }
+    // 2. 读文件内容
+    fileInfo, _ := fp.Stat()
+    all := make([]byte, fileInfo.Size())
+    num, err := fp.Read(all)
+    if err != nil {
+        return errors.New("读文件内容失败!!!")
+    }
+    fmt.Println("文件大小: ", num)
+    // 3. 关闭文件
+    defer fp.Close()
+    // 4. 将公钥数据解析为pem格式的数据块
+    block, _ := pem.Decode(all)
+    // 5. 将公钥从pem数据块中提取出来
+    pubInterface, err := x509.ParsePKIXPublicKey(block.Bytes)
+    if err != nil {
+        return errors.New("解析公钥失败!!!")
+    }
+    // 6. 公钥接口转换为公钥对象
+    pubKey := pubInterface.(*rsa.PublicKey)
+    // 待认证数据
+    myData := []byte("渡远荆门外，来从楚国游。山随平野尽，江入大荒流。月下飞天境，云生结海楼。仍怜故乡水，万里送行舟。")
+    // 7. 将数据通过哈希函数生成信息摘要
+    myHash := sha256.New()
+    myHash.Write(myData)
+    result := myHash.Sum(nil)
 
-	// 7. 数据认证
-	err = rsa.VerifyPKCS1v15(pubKey, crypto.SHA256, result, src)
-	if err != nil {
-		return err
-	}
+    // 7. 数据认证
+    err = rsa.VerifyPKCS1v15(pubKey, crypto.SHA256, result, src)
+    if err != nil {
+        return err
+    }
 
-	fmt.Println("数字签名验证成功, 恭喜o(*￣︶￣*)o恭喜")
-	return nil
+    fmt.Println("数字签名验证成功, 恭喜o(*￣︶￣*)o恭喜")
+    return nil
 }
 ```
 
@@ -2342,20 +2337,20 @@ func VerifyRSA(src []byte) (error){
 >
 > 2. <font color="red" size=4>Bob在认证机构Trent注册自己的公钥</font>
 >
->    - 在这里Bob则将公钥发送给了认证机构Trent，这是因为Bob需要请认证机构Trent对他的公钥加上数字签名（也就是生成证书）。  
+>    - 在这里Bob则将公钥发送给了认证机构Trent，这是因为Bob需要请认证机构Trent对他的公钥加上数字签名（也就是生成证书）。
 >
 >    - Trent收到Bob的公钥后，会确认所收到的公钥是否为Bob本人所有（参见专栏：身份确认和认证业务准则）
 >
 >      > <font color="red" size=5>专栏：身份确认和认证业务准则</font>
 >      >
 >      > 认证机构确认"本人"身份的方法和认证机构的认证业务准则（CertificatePractice Statement, CPS，的内容有关。如果认证机构提供的是测试用的服务，那么可能完全不会进行任何身份确认。如果是政府部门运營的认证机构，可能就需要根据法律规定来进行身份确认。如果是企业面向内部设立的认证机构，那就可能会给部门负责人打电话直接确认。
->      >    
+>      >
 >      > 例如，VeriSign的认证业务准则中将身份确认分为Class1 ~ 3共三个等级
->      >    
+>      >
 >      > - Class1：通过向邮箱发送件来确认本人身份
 >      > - Class2：通过第三方数据库来确认本人身份
 >      > - Class3：通过当面认证和身份证明来确认本人身份
->      >    
+>      >
 >      > 等级越高，身份确认越严格。
 >
 > 3. <font color="red" size=4>认证机构Trent用自己的私钥对Bob的公钥施加数字签名并生成证书</font>
@@ -2400,7 +2395,7 @@ func VerifyRSA(src []byte) (error){
 >
 > - <font color="red">签名算法（Signature Algorithm）</font>：数字签名所采用的算法，如：
 >
->   - sha256-with-RSA-Encryption 
+>   - sha256-with-RSA-Encryption
 >   - ccdsa-with-SHA2S6；
 >
 >
@@ -2483,7 +2478,7 @@ Certificate:
         Subject Public Key Info:
             Public Key Algorithm: id-ecPublicKey
                 Public-Key: (256 bit)
-                pub: 
+                pub:
                     04:c9:22:69:31:8a:d6:6c:ea:da:c3:7f:2c:ac:a5:
                     af:c0:02:ea:81:cb:65:b9:fd:0c:6d:46:5b:c9:1e:
                     ed:b2:ac:2a:1b:4a:ec:80:7b:e7:1a:51:e0:df:f7:
@@ -2494,29 +2489,29 @@ Certificate:
         X509v3 extensions:
             X509v3 Key Usage: critical
                 Digital Signature, Key Agreement
-            Authority Information Access: 
+            Authority Information Access:
                 CA Issuers - URI:http://secure.globalsign.com/cacert/gsorganizationvalsha2g2r1.crt
                 OCSP - URI:http://ocsp2.globalsign.com/gsorganizationvalsha2g2
 
-            X509v3 Certificate Policies: 
+            X509v3 Certificate Policies:
                 Policy: 1.3.6.1.4.1.4146.1.20
                   CPS: https://www.globalsign.com/repository/
                 Policy: 2.23.140.1.2.2
 
-            X509v3 Basic Constraints: 
+            X509v3 Basic Constraints:
                 CA:FALSE
-            X509v3 CRL Distribution Points: 
+            X509v3 CRL Distribution Points:
 
                 Full Name:
                   URI:http://crl.globalsign.com/gs/gsorganizationvalsha2g2.crl
 
-            X509v3 Subject Alternative Name: 
+            X509v3 Subject Alternative Name:
                 DNS:*.wikipedia.org, DNS:*.m.mediawiki.org, DNS:*.m.wikibooks.org, DNS:*.m.wikidata.org, DNS:*.m.wikimedia.org, DNS:*.m.wikimediafoundation.org, DNS:*.m.wikinews.org, DNS:*.m.wikipedia.org, DNS:*.m.wikiquote.org, DNS:*.m.wikisource.org, DNS:*.m.wikiversity.org, DNS:*.m.wikivoyage.org, DNS:*.m.wiktionary.org, DNS:*.mediawiki.org, DNS:*.planet.wikimedia.org, DNS:*.wikibooks.org, DNS:*.wikidata.org, DNS:*.wikimedia.org, DNS:*.wikimediafoundation.org, DNS:*.wikinews.org, DNS:*.wikiquote.org, DNS:*.wikisource.org, DNS:*.wikiversity.org, DNS:*.wikivoyage.org, DNS:*.wiktionary.org, DNS:*.wmfusercontent.org, DNS:*.zero.wikipedia.org, DNS:mediawiki.org, DNS:w.wiki, DNS:wikibooks.org, DNS:wikidata.org, DNS:wikimedia.org, DNS:wikimediafoundation.org, DNS:wikinews.org, DNS:wikiquote.org, DNS:wikisource.org, DNS:wikiversity.org, DNS:wikivoyage.org, DNS:wiktionary.org, DNS:wmfusercontent.org, DNS:wikipedia.org
-            X509v3 Extended Key Usage: 
+            X509v3 Extended Key Usage:
                 TLS Web Server Authentication, TLS Web Client Authentication
-            X509v3 Subject Key Identifier: 
+            X509v3 Subject Key Identifier:
                 28:2A:26:2A:57:8B:3B:CE:B4:D6:AB:54:EF:D7:38:21:2C:49:5C:36
-            X509v3 Authority Key Identifier: 
+            X509v3 Authority Key Identifier:
                 keyid:96:DE:61:F1:BD:1C:16:29:53:1C:C0:CC:7D:3B:83:00:40:E6:1A:7C
 
     Signature Algorithm: sha256WithRSAEncryption
@@ -2544,9 +2539,9 @@ Certificate:
 
 - 证书信任链
 
-  > 证书直接是可以有信任关系的, 通过一个证书可以证明另一个证书也是真实可信的. 实际上，证书之间的信任关系，是可以嵌套的。比如，C 信任 A1，A1 信任 A2，A2 信任 A3......这个叫做证书的信任链。只要你信任链上的头一个证书，那后续的证书，都是可以信任滴。 
+  > 证书直接是可以有信任关系的, 通过一个证书可以证明另一个证书也是真实可信的. 实际上，证书之间的信任关系，是可以嵌套的。比如，C 信任 A1，A1 信任 A2，A2 信任 A3......这个叫做证书的信任链。只要你信任链上的头一个证书，那后续的证书，都是可以信任滴。
   >
-  > 假设 C 证书信任 A 和 B；然后 A 信任 A1 和 A2；B 信任 B1 和 B2。则它们之间，构成如下的一个树形关系（一个倒立的树）。 
+  > 假设 C 证书信任 A 和 B；然后 A 信任 A1 和 A2；B 信任 B1 和 B2。则它们之间，构成如下的一个树形关系（一个倒立的树）。
 
   ![1533293270573](assets/1533293270573.png)
 
@@ -2556,7 +2551,7 @@ Certificate:
 
 - 证书有啥用
 
-  > 1. **验证网站是否可信（针对HTTPS）** 
+  > 1. **验证网站是否可信（针对HTTPS）**
   >
   >    通常，我们如果访问某些敏感的网页（比如用户登录的页面），其协议都会使用 HTTPS 而不是 HTTP。因为 HTTP 协议是明文的，一旦有坏人在偷窥你的网络通讯，他/她就可以看到网络通讯的内容（比如你的密码、银行帐号、等）；而 HTTPS 是加密的协议，可以保证你的传输过程中，坏蛋无法偷窥。
   >
@@ -2564,15 +2559,15 @@ Certificate:
   >
   >    为了防止坏人这么干，HTTPS 协议除了有加密的机制，还有一套证书的机制。通过证书来确保，某个站点确实就是某个站点。
   >
-  >    有了证书之后，当你的浏览器在访问某个 HTTPS 网站时，会验证该站点上的 CA 证书（类似于验证介绍信的公章）。如果浏览器发现该证书没有问题（证书被某个根证书信任、证书上绑定的域名和该网站的域名一致、证书没有过期），那么页面就直接打开；否则的话，浏览器会给出一个警告，告诉你该网站的证书存在某某问题，是否继续访问该站点？下面给出 IE 和 Firefox 的抓图： 
+  >    有了证书之后，当你的浏览器在访问某个 HTTPS 网站时，会验证该站点上的 CA 证书（类似于验证介绍信的公章）。如果浏览器发现该证书没有问题（证书被某个根证书信任、证书上绑定的域名和该网站的域名一致、证书没有过期），那么页面就直接打开；否则的话，浏览器会给出一个警告，告诉你该网站的证书存在某某问题，是否继续访问该站点？下面给出 IE 和 Firefox 的抓图：
   >
-  >    ![img](assets/03113237-5408b6ece0c84744b106e639ddf4956b.png) 
+  >    ![img](assets/03113237-5408b6ece0c84744b106e639ddf4956b.png)
   >
-  >    ![img](assets/03113237-1369f659d6e4496e8bb3a742198cef63.png) 
+  >    ![img](assets/03113237-1369f659d6e4496e8bb3a742198cef63.png)
   >
-  >    大多数知名的网站，如果用了 HTTPS 协议，其证书都是可信的（也就不会出现上述警告）。所以，今后你如果上某个知名网站，发现浏览器跳出上述警告，你就要小心啦！ 
+  >    大多数知名的网站，如果用了 HTTPS 协议，其证书都是可信的（也就不会出现上述警告）。所以，今后你如果上某个知名网站，发现浏览器跳出上述警告，你就要小心啦！
   >
-  > 2. **验证某文件是否可信（是否被篡改）** 
+  > 2. **验证某文件是否可信（是否被篡改）**
   >
   >    证书除了可以用来验证某个网站，还可以用来验证某个文件是否被篡改。具体是通过证书来制作文件的数字签名。制作数字签名的过程太专业，咱就不说了。后面专门告诉大家如何验证文件的数字签名。考虑到大多数人用 Windows 系统，俺就拿 Windows 的例子来说事儿。
   >
@@ -2582,11 +2577,11 @@ Certificate:
   >
   >    一般来说，签名列表中，有且仅有一个签名。选中它，点“**详细信息**”按钮。跳出如下界面：
   >
-  >    通常这个界面会显示一行字：“**该数字签名正常**”（图中红圈标出）。如果有这行字，就说明该文件从出厂到你手里，中途没有被篡改过（是原装滴、是纯洁滴）。如果该文件被篡改过了（比如，感染了病毒、被注入木马），那么对话框会出现一个警告提示“**该数字签名无效**” 
+  >    通常这个界面会显示一行字：“**该数字签名正常**”（图中红圈标出）。如果有这行字，就说明该文件从出厂到你手里，中途没有被篡改过（是原装滴、是纯洁滴）。如果该文件被篡改过了（比如，感染了病毒、被注入木马），那么对话框会出现一个警告提示“**该数字签名无效**”
   >
   >    ![1533294414623](assets/1533294414623.png)
   >
-  >    不论签名是否正常，你都可以点“查看证书”按钮。这时候，会跳出证书的对话框。如下： 
+  >    不论签名是否正常，你都可以点“查看证书”按钮。这时候，会跳出证书的对话框。如下：
   >
   >    ![1533294685323](assets/1533294685323.png)
   >
@@ -2596,7 +2591,7 @@ Certificate:
   >
   >    - 第1层是根证书（verisign）。
   >    - 第2层是 symantec 专门用来签名的证书。
-  >    - 第3层是 Google自己的证书。 
+  >    - 第3层是 Google自己的证书。
   >
   >    目前大多数知名的公司（或组织机构），其发布的可执行文件（比如软件安装包、驱动程序、安全补丁），都带有数字签名。你可以自己去看一下。
   >
@@ -2644,8 +2639,8 @@ PKI的组成要素主要有以下三个：
   - 验证数字签名
 
   ```c++
-  /* 
-  ==================== 小知识点 ==================== 
+  /*
+  ==================== 小知识点 ====================
   浏览器如何验证SSL证书
   1. 在IE浏览器的菜单中点击“工具 /Internet选项”，选择“内容”标签，点击“证书”按钮，然后就可以看到IE
      浏览器已经信任了许多“中级证书颁发机构”和“受信任的根证书颁发机 构。当我们在访问该网站时，浏览器
@@ -2700,7 +2695,7 @@ PKI的组成要素主要有以下三个：
 >
 > 国家、地方政府、医院、图书馆等公共组织和团体可以成立认证机构来实现PKI,公司也可以出于业务需要在内部实现PKI,甚至你和你的朋友也可以以实验为目的来构建PKI。
 >
-> 在公司内部使用的情况下，认证机构的层级可以像上一节中一样和公司的组织层级一一对应，也可以不一一对应。例如，如果公司在东京、大阪、北海道和九州都成立了分公司，也可以采取各个分公司之间相互认证的结构。在认证机构的运营方面，可以购买用于构建PKI的软件产品由自己公司运营，也可以使用VeriSign等外部认证服务。具体要采取怎样的方式，取决于目的和规模，并没有一定之规。 
+> 在公司内部使用的情况下，认证机构的层级可以像上一节中一样和公司的组织层级一一对应，也可以不一一对应。例如，如果公司在东京、大阪、北海道和九州都成立了分公司，也可以采取各个分公司之间相互认证的结构。在认证机构的运营方面，可以购买用于构建PKI的软件产品由自己公司运营，也可以使用VeriSign等外部认证服务。具体要采取怎样的方式，取决于目的和规模，并没有一定之规。
 
 ## 9. SSL/TLS
 
@@ -2728,7 +2723,7 @@ PKI的组成要素主要有以下三个：
 >
 > 本章将要介绍的技术一一SSL/TLS就可以解答Alice的疑问。当进行SSL/TLS通信时，Web浏览器上就会显示一个小锁头的图标。
 
-                              **Alice的Web浏览器（客户端）和Bob书店的网站（服务器）进行HTTP通信**
+                **Alice的Web浏览器（客户端）和Bob书店的网站（服务器）进行HTTP通信**
 
 ![1538753959418](assets/1538753959418.png)
 
@@ -2853,4 +2848,3 @@ PKCS 目前共发布过 15 个标准：
 13. PDCS#13：椭圆曲线密码标准。PKCS#13标准当前正在完善之中。它包括椭圆曲线参数的生成和验证、密钥生成和验证、数字签名和公钥加密，还有密钥协定，以及参数、密钥和方案标识的ASN.1语法。
 14. PKCS#14：伪随机数产生标准。PKCS#14标准当前正在完善之中。为什么随机数生成也需要建立自己的标准呢？PKI中用到的许多基本的密码学函数，如密钥生成和Diffie-Hellman共享密钥协商，都需要使用随机数。然而，如果“随机数”不是随机的，而是取自一个可预测的取值集合，那么密码学函数就不再是绝对安全了，因为它的取值被限于一个缩小了的值域中。因此，安全伪随机数的生成对于PKI的安全极为关键。
 15. **PKCS#15：密码令牌信息语法标准。** PKCS#15通过定义令牌上存储的密码对象的通用格式来增进密码令牌的互操作性。在实现PKCS#15的设备上存储的数据对于使用该设备的所有应用程序来说都是一样的，尽管实际上在内部实现时可能所用的格式不同。PKCS#15的实现扮演了翻译家的角色，它在卡的内部格式与应用程序支持的数据格式间进行转换。
-
