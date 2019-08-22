@@ -6,7 +6,8 @@
 
 * [密码学](columns/cryptography/crypt.md)
 * [10x程序员工作法](/columns/jike/10x-programmer-works.md)
-* [如何设计一个秒杀系统](/columns/jike/seckill-system.md/)
+* [如何设计一个秒杀系统](/columns/jike/seckill-system.md)
+* [Go专家编程](/columns/go/expert-programming.md)
 * [程序员进阶攻略]()
 * [趣谈网络协议]()
 * [趣谈Linux操作系统]()
