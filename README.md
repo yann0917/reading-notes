@@ -20,6 +20,8 @@
 * [重构 改善既有代码的设计 第2版](/books/refactoring-2nd.md)
 * [高效程序员的45个习惯](/books/practices-of-an-agile-developer.md)
 * [算法图解](/books/grokking-algorithms.md)
+* [Rust 程序设计语言 中文版](/books/rust-lang-cn.md)
+* [Rust语言圣经](/books/rust-course.md)
 * [Redis 实战]()
 * [C 语言程序设计现代方法]()
 * [RabbitMQ 实战]()
